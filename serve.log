@@ -1,0 +1,4 @@
+::ffff:127.0.0.1 - - [20/Jun/2026 13:46:30] "GET /index.html HTTP/1.1" 200 -
+::ffff:127.0.0.1 - - [20/Jun/2026 13:46:40] "GET /index.html HTTP/1.1" 200 -
+::ffff:127.0.0.1 - - [20/Jun/2026 13:46:43] "GET /why-worktrees.html HTTP/1.1" 200 -
+::ffff:127.0.0.1 - - [20/Jun/2026 13:47:13] "GET /index.html HTTP/1.1" 200 -
