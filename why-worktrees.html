@@ -104,14 +104,6 @@
 <li><strong>提交/合并闸门</strong>（一个 <code>pre-commit</code> hook 加一个 Bash PreToolUse hook），让工作只能经受认可的合并进入 <code>main</code>。</li>
 </ul>
 <p>hook 把常规的编辑/提交/合并路径卡住；两个封装脚本把剩下的也变成一步——一个建 worktree（链接 <code>.env</code>、分配备用端口让两套 dev 栈不打架），一个做 <code>--no-ff</code> 合并并移除它、树脏就拒绝。</p>
-<div class="termwrap"><div class="termbar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="lbl">worktree hook 触发时的真实输出</span></div><pre class="term"><span class="dim"># an agent tries to edit a file in the main tree →</span>
-<span class="bad">✗ [hook] BLOCKED editing: client-game/src/HeroZone.vue</span>
-<span class="bad">        it's in the shared main tree; HEAD is 'main'</span>
-
-<span class="dim"># blocked — so it makes its own worktree instead →</span>
-$ scripts/new-session.sh raise-slider feat
-<span class="ok">  ✓ worktree ready → feat/raise-slider (off main)</span></pre></div>
-<p class="figcap">证明它是被强制的、不是只靠自觉——hook 拒绝对 <code>main</code> 的编辑，于是 agent 自己去建一个 worktree。</p>
 </section><section id="s3"><h2>底层怎么运作</h2>
 <p>主仓库的 <code>.git</code> 下只有一个对象数据库、一套 ref。每个链接的 worktree 在 <code>.git/worktrees/&lt;name&gt;/</code> 有一个小管理目录，存自己的 HEAD 和 index；它的工作目录里放的是一个 <code>.git</code> <em>文件</em>（一行指针指回去），而不是目录。</p>
 <table><thead><tr><th>状态</th><th>逐 worktree</th><th>共享</th></tr></thead><tbody>
@@ -201,14 +193,6 @@ $ scripts/new-session.sh raise-slider feat
 <li><strong>Commit/merge gates</strong> (a <code>pre-commit</code> hook plus a Bash PreToolUse hook) keep work off <code>main</code> except through the sanctioned merge.</li>
 </ul>
 <p>The hooks gate the normal edit/commit/merge path; two wrapper scripts make the rest one step — one creates the worktree (linking <code>.env</code>, assigning alt ports so two dev stacks don't collide), one does the <code>--no-ff</code> merge and removes it, refusing if the tree is dirty.</p>
-<div class="termwrap"><div class="termbar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="lbl">the worktree hook firing · real output</span></div><pre class="term"><span class="dim"># an agent tries to edit a file in the main tree →</span>
-<span class="bad">✗ [hook] BLOCKED editing: client-game/src/HeroZone.vue</span>
-<span class="bad">        it's in the shared main tree; HEAD is 'main'</span>
-
-<span class="dim"># blocked — so it makes its own worktree instead →</span>
-$ scripts/new-session.sh raise-slider feat
-<span class="ok">  ✓ worktree ready → feat/raise-slider (off main)</span></pre></div>
-<p class="figcap">Proof it's enforced, not just advised — the hook refuses an edit to <code>main</code>, so the agent makes a worktree.</p>
 </section><section id="s3"><h2>How it works</h2>
 <p>There's one object database and one set of refs under the main repo's <code>.git</code>. Each linked worktree gets a small admin dir at <code>.git/worktrees/&lt;name&gt;/</code> holding its own HEAD and index; its working directory holds a <code>.git</code> <em>file</em> (a one-line pointer back), not a directory.</p>
 <table><thead><tr><th>State</th><th>Per-worktree</th><th>Shared</th></tr></thead><tbody>
