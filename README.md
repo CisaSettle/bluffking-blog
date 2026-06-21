@@ -57,4 +57,4 @@ BluffKing 是一款浏览器端的无限注德州扑克，几乎完全由 AI 编
 
 ---
 
-主站 [bluffking.ai](https://bluffking.ai) · X / Twitter [@PokerCoachAI](https://x.com/PokerCoachAI)
+主站 [bluffking.ai](https://bluffking.ai) · X / Twitter [@BluffKingAI](https://x.com/BluffKingAI)

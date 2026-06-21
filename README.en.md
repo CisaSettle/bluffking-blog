@@ -57,4 +57,4 @@ BluffKing is a browser No-Limit Texas Hold'em app built almost entirely with AI 
 
 ---
 
-Main site [bluffking.ai](https://bluffking.ai) · X / Twitter [@PokerCoachAI](https://x.com/PokerCoachAI)
+Main site [bluffking.ai](https://bluffking.ai) · X / Twitter [@BluffKingAI](https://x.com/BluffKingAI)
