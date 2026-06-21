@@ -1,6 +1,15 @@
 <!doctype html>
 <html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>为什么每个 AI 编码 agent 都该有自己的 git worktree / Why every AI coding agent needs its own git worktree</title>
+<meta name="description" content="把两个 agent 指向同一个 checkout，它们会互相破坏。这是解法。Point two agents at one checkout and they corrupt each other — here's the fix.">
+<!-- Canonical live post is the marketing site; this GitHub Pages mirror defers to it. -->
+<link rel="canonical" href="https://bluffking.ai/zh/blog/why-worktrees/">
+<link rel="alternate" hreflang="zh" href="https://bluffking.ai/zh/blog/why-worktrees/">
+<link rel="alternate" hreflang="en" href="https://bluffking.ai/en/blog/why-worktrees/">
+<link rel="alternate" hreflang="x-default" href="https://bluffking.ai/zh/blog/why-worktrees/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Why every AI coding agent needs its own git worktree / 为什么每个 AI 编码 agent 都该有自己的 git worktree">
+<meta property="og:url" content="https://bluffking.ai/zh/blog/why-worktrees/">
 <style>
   :root{--green:#0b5d3b;--green2:#0f7a4e;--ink:#14201b;--muted:#5b6b63;--line:#dce5e0;--bg:#f5f8f6;--card:#fff;--code:#0d1b14;}
   *{box-sizing:border-box}
